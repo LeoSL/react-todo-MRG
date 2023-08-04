@@ -6,6 +6,7 @@ const App: React.FC = () => {
   const [tasks, setTasks] = useState<{ id: number; task: string; completed: boolean }[]>([]);
 
   const handleAddTask = (task: string) => {
+    console.log("Adding task:", task);
     setTasks((prevTasks) => [...prevTasks, { id: Date.now(), task, completed: false }]);
   };
 
@@ -20,6 +21,7 @@ const App: React.FC = () => {
   const handleDeleteTask = (taskId: number) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
+
 
   return (
     <div className="app">
