@@ -48,7 +48,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ task, completed, onToggleComplete, 
         </div>
       ) : (
         <span className={`todo-item ${completed ? 'completed' : ''}`}>
-          {task}
+          {completed ? <s>{editedTask}</s> : editedTask}
         </span>
        
       )}
