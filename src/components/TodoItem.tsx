@@ -22,12 +22,16 @@ const TodoItem: React.FC<TodoItemProps> = ({ task, completed, onToggleComplete, 
 
   const handleTaskSave = () => {
     if (editedTask.trim() !== '' && editedTask !== task) {
-      
       setEditing(false);
-      
       updateTaskText(editedTask);
     } else {
       setEditing(false);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleTaskSave();
     }
   };
 
@@ -40,6 +44,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ task, completed, onToggleComplete, 
           type="text"
           value={editedTask}
           onChange={handleTaskUpdate}
+          onKeyDown={handleKeyDown}
           autoFocus
         />
         <button className="save-btn" onClick={handleTaskSave}>
